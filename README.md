@@ -12,3 +12,5 @@ Comes in two parts.
   
 Arguably a 3rd component is the adminitration tool of the web service that allows you to control how long messages are stored.
 
+**genkey.php** - an API that accepts an email address, and campaign_id, creates a hash and returns it for use as the ViewInBrowser link
+
