@@ -14,3 +14,6 @@ Arguably a 3rd component is the adminitration tool of the web service that allow
 
 **genkey.php** - an API that accepts an email address, and campaign_id, creates a hash and returns it for use as the ViewInBrowser link
 
+**econsumer.php** - This will take in a relay-webhook from Sparkpost and save the HTML and TEXT parts as files for later viewing. Be sure to create a valid inbound domain first (https://{{host}}/api/v1/inbound-domains)
+
+
