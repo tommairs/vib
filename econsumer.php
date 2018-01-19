@@ -2,24 +2,24 @@
 <?php
 // Read email to a var
 // Capture inbound HTTP REQUEST
-  $verb = $_SERVER['REQUEST_METHOD'];
-  if ($verb == "POST") {
+$verb = $_SERVER['REQUEST_METHOD'];
+$authtoken = $_SERVER['HTTP_X-MessageSystems-Webhook-Token'];
+$filepath = 
+if ($verb == "POST") {
+  if ($authtoken="5l<redacted>69"){
     $body = file_get_contents("php://input");
-    $email = preg_grep("/email[\:\"\s]*[\w\d\.-_]*\@[\w\d\.-_]*/", $body); 
-    $campaign_id = preg_grep("/campaign_id[\:\"\s]*[\w\d\.-_]*/", $body);
-    $t = date("Y-m-d:h:i:s",time()));
-    $options = [
-      'cost' => 11,
-      'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM),
-    ];
-    $UUID = password_hash($email.$campaign_id.$t, PASSWORD_BCRYPT, $options);
-    echo $proto.$URL."?l="$UUID;
-  }
+    $result = json_decode($body);
+    // Extract HTML part and save it
+    $location = "123123123123123";
+    $htmlpart = $result['relay_message']['html'];
+    file_put_contents ($filepath.$location,$htmlpart);
 
-// Extract HTML part and save it
+    // Extract TEXT part and save it
+    $textpart = $result['relay_message']['text'];
+    file_put_contents ($filepath.$location."txt",$textpart);
 
-// Extract TEXT part and save it
+  }  
+}
 
-// Delete original email
 
 ?>
