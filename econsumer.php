@@ -4,7 +4,7 @@
 // Capture inbound HTTP REQUEST
 $verb = $_SERVER['REQUEST_METHOD'];
 $authtoken = $_SERVER['HTTP_X-MessageSystems-Webhook-Token'];
-$filepath = 
+$filepath = "./data/";
 if ($verb == "POST") {
   if ($authtoken="5l<redacted>69"){
     $body = file_get_contents("php://input");
