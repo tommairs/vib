@@ -17,16 +17,13 @@ $proto = "https://";
   $verb = $_SERVER['REQUEST_METHOD'];
   if ($verb == "GET") {
     $body = file_get_contents("php://input");
-    $email = preg_grep("/email[\:\"\s]*[\w\d\.-_]*\@[\w\d\.-_]*/", $body); 
-    $campaign_id = preg_grep("/campaign_id[\:\"\s]*[\w\d\.-_]*/", $body);
-    $t = date("Y-m-d:h:i:s",time()));
-    $options = [
-      'cost' => 11,
-      'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM),
-    ];
-    $UUID = password_hash($email.$campaign_id.$t, PASSWORD_BCRYPT, $options);
-    echo $proto.$URL."?l="$UUID;
+   //Generate large random number and combine with current time to make UUID
+    $lownum = 100000;
+    $highnum = 999999;
+    $arnd = rand($lownum,$highnum);
+    $t = time();
+    $UUID = "$t"."$arnd";
+    echo $proto.$URL."?l=".$UUID;
   }
-
 
 ?>
