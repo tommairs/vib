@@ -12,7 +12,7 @@ if ($verb == "POST") {
     
     // Extract target location and save it
     $rawmessage.= $result[0]['msys']['relay_message']['content']['html'];
-    preg_match('/http(.*)\/\/(.*)l=([a-zA-Z\d$_-]*).html/',$rawmessage,$viblink);
+    preg_match('/http(.*)\/\/(.*)l=([a-zA-Z\d$_-]+)/',$rawmessage,$viblink);
     $location = $viblink[3];
 
     // Add link to TEXT version
