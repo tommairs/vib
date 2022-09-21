@@ -1,6 +1,6 @@
 # VIB
 
-##View In Browser functionality for Sparkpost
+## View In Browser functionality for Sparkpost
 
 This project was built to satisfy the need of having a View In Browser capability usable with SparkPost.
 
